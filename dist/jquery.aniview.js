@@ -58,10 +58,22 @@
         function RenderElementsCurrentlyInViewport(collection) {
             $(collection).each(function(index, element) {
                 var elementParentContainer = $(element).parent('.av-container');
-                if ($(element).is('[data-av-animation]') && !$(elementParentContainer).hasClass('av-visible') && EnteringViewport(elementParentContainer)) {
+                if ($(element).attr('class').indexOf('av-animation-')>0 && !$(elementParentContainer).hasClass('av-visible') && EnteringViewport(elementParentContainer)) {
                     $(element).css('opacity', 1);
                     $(elementParentContainer).addClass('av-visible');
-                    $(element).addClass('animated ' + $(element).attr('data-av-animation'));
+                    var effectName = '';
+                    var newClass = '';
+                    $.each($(element).attr('class').split(' '), function(index, value) {
+                      if (value.indexOf('av-animation-')>-1) {
+                        effectName = value.replace('av-animation-','');
+                      }
+                      else
+                      {
+                        newClass += value + ' ';
+                      }
+                    });
+                    newClass += 'animated ' + effectName + ' ';
+                    $(element).attr('class', newClass);
                 }
             });
         }
