@@ -56,7 +56,7 @@ animateThreshold  | int | +ve numbers delay the animation sequence until the spe
 scrollPollInterval  | int | The frequency at which user scrolling is 'polled' i.e. tested. This is in milliseconds (ms) and is an extension to jQuery's in-built 'scroll' event/handler. | 20
 ## Markup
 ```HTML
-<div class="aniview" data-av-animation="slideInRight"></div>
+<div class="aniview av-animation-slideInRight"></div>
 ```
 
 ## Full Example
@@ -82,7 +82,7 @@ A typical working example (minimal) might look something like this:
 </head>
 <body>
     <div>
-        <p class="aniview" data-av-animation="slideInRight">
+        <p class="aniview av-animation-slideInRight">
             This is my awesome animated element!
         </p>
     </div>
